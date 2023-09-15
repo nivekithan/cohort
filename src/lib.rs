@@ -1,5 +1,7 @@
 use std::{collections::HashMap, fmt::Display};
 
+mod assignment_2;
+
 pub struct Person {
     name: String,
     age: u32,
