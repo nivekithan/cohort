@@ -7,12 +7,7 @@ where
     T: std::ops::Add<T> + Copy,
     Vec<T>: FromIterator<T::Output>,
 {
-    return collection
-        .iter()
-        .map(|&v| {
-            return v + n;
-        })
-        .collect();
+    collection.iter().map(|&v| v + n).collect()
 }
 
 pub fn filter_by_condition<T, F>(collection: &Vec<T>, cb: F) -> Vec<T>
@@ -30,22 +25,22 @@ where
         }
     });
 
-    return output;
+    output
 }
 
 pub fn transform_to_string<T, F>(collection: &Vec<T>, cb: F) -> Vec<String>
 where
     F: Fn(&T) -> String,
 {
-    let mut ouput: Vec<String> = Vec::new();
+    let mut output: Vec<String> = Vec::new();
 
     collection.iter().for_each(|v| {
         let transformed_value = cb(v);
 
-        ouput.push(transformed_value);
+        output.push(transformed_value);
     });
 
-    return ouput;
+    output
 }
 
 pub fn display_vectors<T>(collection: &Vec<T>)
@@ -83,9 +78,7 @@ mod tests {
     fn test_filter_by_condition() {
         let collection = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-        let new_collection = filter_by_condition(&collection, |v| {
-            return v % 2 == 0;
-        });
+        let new_collection = filter_by_condition(&collection, |v| v % 2 == 0);
 
         assert_eq!(new_collection, vec![2, 4, 6, 8, 10]);
     }
@@ -94,9 +87,7 @@ mod tests {
     fn test_transform_to_string() {
         let collection = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-        let new_collection = transform_to_string(&collection, |v| {
-            return format!("{}", v);
-        });
+        let new_collection = transform_to_string(&collection, |v| format!("{}", v));
 
         assert_eq!(
             new_collection,
