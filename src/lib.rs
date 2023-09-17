@@ -1,6 +1,7 @@
 use std::{collections::HashMap, fmt::Display};
 
 mod assignment_2;
+mod bloom_filter;
 
 pub struct Person {
     name: String,
