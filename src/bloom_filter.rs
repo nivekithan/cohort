@@ -63,7 +63,7 @@ impl BloomFilter {
     }
 
     fn indicies(&self, hash1: u64, hash2: u64) -> impl Iterator<Item = u64> {
-        // We generate `no_of_hashes`number of hashes using algorithm
+        // We generate `no_of_hashes` number of hashes using algorithm
         // g_i = h_1 + i * h2 from "Less hashing, same performance: Building a better
         // bloom filter" by Kirtz and Mitzenmacher
 
@@ -71,7 +71,7 @@ impl BloomFilter {
         ((0u64)..self.no_of_hashes)
             // In rust arithmetic operations are not expected to overflow, when it does overflow it
             // may panic (in certain configuration) too. Therefore for algorithm which expects and relies
-            // upon modular arithmetic we should use `wrapping_*` functions
+            // upon modular arithmetic we need to use `wrapping_*` functions
             .map(move |i| hash1.wrapping_add((hash2).wrapping_mul(i)))
             .map(move |new_hash| (new_hash % len))
     }
