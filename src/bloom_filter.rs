@@ -113,9 +113,9 @@ mod test {
         let mut no_of_false_postive = 0;
 
         (11..1000).map(|v| format!("{}", v)).for_each(|v| {
-            let is_false_present = bloom_filter.check(&v);
+            let is_false_positive = bloom_filter.check(&v);
 
-            if is_false_present {
+            if is_false_positive {
                 no_of_false_postive += 1;
             }
         });
