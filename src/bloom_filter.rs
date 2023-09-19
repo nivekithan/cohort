@@ -121,7 +121,7 @@ mod test {
         });
 
         // It does following algorithm in floating point
-        // fp_rate = ( no_false_positive / (100 - 11 + 1) )
+        // fp_rate = ( no_false_positive / (1000 - 11 + 1) )
         let fp_rate: f64 = (no_of_false_postive as f64) / (1000f64 - 11f64 + 1f64);
 
         println!("False postive rate: {}", fp_rate);
