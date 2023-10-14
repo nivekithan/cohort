@@ -3,6 +3,7 @@ use std::{collections::HashMap, fmt::Display};
 mod assignment_2;
 mod assignment_3;
 mod bloom_filter;
+mod broadcast;
 
 pub struct Person {
     name: String,
